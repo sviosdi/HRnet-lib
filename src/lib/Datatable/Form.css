@@ -1,0 +1,44 @@
+.datatableform-submission {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.datatableform-submission button {
+    margin: 5px;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+
+}
+
+.datatableform-submission button:focus-visible {
+    outline: solid 1px #424040;
+}
+
+.cfsb-clear,
+.cfsb-save {
+    margin: 5px;
+    outline: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 0.85rem;
+}
+
+.cfsb-clear {
+    background-color: white;
+    color: #424040;
+    border: 1px solid #424040 !important;
+
+}
+
+.cfsb-save {
+    background-color: #597008;
+    color: white;
+    border: none;
+}

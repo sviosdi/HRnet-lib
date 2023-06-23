@@ -1,0 +1,176 @@
+.dataTable {
+    font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif !important;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.dataTable h2 {
+    color: #597008;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.dataTable table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.dataTable table thead>tr>th {
+    cursor: pointer;
+    position: relative;
+    padding-right: 26px;
+}
+
+.dataTable table thead>tr>th::before,
+.dataTable table thead>tr>th::after {
+    position: absolute;
+    display: block;
+    right: 10px;
+    line-height: 9px;
+    font-size: 0.8em;
+    color: #ddddddab;
+}
+
+.dataTable table thead>tr>th::before {
+    top: calc(50% - 0.7em);
+    content: "▲";
+}
+
+.dataTable table thead>tr>th.asc::before,
+.dataTable table thead>tr>th.desc::after {
+    color: #555555ab;
+}
+
+.dataTable table thead>tr>th::after {
+    bottom: calc(50% - 0.8em);
+    content: "▼";
+}
+
+.dataTable table thead {
+    border-bottom: 1px solid #999999ba;
+}
+
+.dataTable table thead th,
+.dataTable table thead td {
+    padding: 10px;
+}
+
+.dataTable table thead th,
+.dataTable table thead td,
+.dataTable table tfoot th,
+.dataTable table tfoot td {
+    text-align: left;
+}
+
+.dataTable table th,
+.dataTable table td {
+    box-sizing: content-box;
+    padding: 8px 10px;
+    /* white-space: nowrap;*/
+}
+
+.dataTable table>tbody>tr:nth-child(2n+1) {
+    background-color: #f4faf8;
+}
+
+.dataTable table>tbody>tr:not(:first-child) {
+    border-bottom: solid 1px #d9d9d9;
+    border-top: solid 1px #d9d9d9;
+}
+
+.dataTable-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.dataTable-header label {
+    margin-left: 10px;
+}
+
+.dataTable-footer {
+    margin-top: 15px;
+}
+
+.dth-leftpart {
+    display: flex;
+    align-items: center;
+}
+
+.dth-leftpart .datatable-buttons {
+    margin-right: 20px;
+}
+
+.dataTable-header input {
+    margin-left: 3px;
+    border: solid 1px #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white;
+    font-size: inherit;
+}
+
+.dataTable-header input:focus-visible {
+    outline: solid #222 1px;
+}
+
+.entries {
+    display: flex;
+    align-items: center;
+}
+
+.entries>div {
+    margin: 0px 5px;
+}
+
+.entries-pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pages-menu a {
+    font: inherit;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    min-width: 1.5em;
+    padding: 0.5em 0.8em;
+    cursor: pointer;
+    margin-left: 2px;
+    user-select: none;
+}
+
+.pages-menu a:hover {
+    color: white;
+    border: 1px solid #111;
+    background: linear-gradient(to bottom, #585858 0%, #111 100%)
+}
+
+.pages-menu a.selected,
+.pages-menu a.selected:hover {
+    color: inherit !important;
+    border: 1px solid #0000004d;
+    background: linear-gradient(to bottom, #e6e6e61a 0%, #0000001a 100%);
+}
+
+.pages-menu a:active {
+    box-shadow: inset 0 0 3px #111;
+    background: linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);
+}
+
+.pages-menu a.disabled {
+    color: #666 !important;
+    cursor: default;
+    border: 1px solid #0000;
+    background: #0000;
+    box-shadow: none;
+}
+
+.pages-menu .ellipse {
+    padding: 0 0.3em;
+    margin-left: 2px;
+    user-select: none;
+}

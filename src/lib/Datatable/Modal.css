@@ -1,0 +1,163 @@
+body {
+    font: 90%/1.45em "Liberation Sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif !important;
+    color: #333;
+}
+
+.sl-modal-wrapper {
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 200ms opacity;
+    visibility: hidden;
+    background: radial-gradient(ellipse farthest-corner at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.9) 100%)
+}
+
+.sl-modal-wrapper.opened {
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+}
+
+.sl-modal {
+    /* visibility: hidden;*/
+    border-radius: 6px;
+    box-shadow: 0 6px 15px 0 #00000080;
+    box-sizing: border-box;
+    background: white;
+}
+
+
+.sl-modal-header {
+    border-radius: 6px 6px 0px 0px;
+    display: flex;
+    font-size: 1.3em;
+    align-items: center;
+    justify-content: space-between;
+    background: #e8e9eb;
+    height: 52px;
+    border-bottom: 1px solid #00000026;
+    padding: 0px 16px;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.sl-modal-header>div:first-child {
+    margin-right: 50px;
+}
+
+.sl-modal-close-btn {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    border: solid 1px transparent;
+    box-sizing: border-box;
+    user-select: none;
+
+}
+
+.sl-modal-close-btn>svg {
+    fill: #666;
+    width: 12px;
+    height: 12px;
+    padding-left: 4px;
+    padding-top: 4px;
+}
+
+.sl-modal-close-btn:hover {
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    fill: #222;
+    background-image: linear-gradient(to bottom, #ffffff 0%, #e2e2e2 100%);
+}
+
+.sl-modal-close-btn:active {
+    box-shadow: inset 0 0 1px #555;
+    background: #f1f2f5;
+    background-image: linear-gradient(to bottom, #ffffff 0%, #e2e2e2 100%);
+}
+
+.sl-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: #e8e9eb;
+    height: 52px;
+    border-top: 1px solid #00000026;
+    border-radius: 0px 0px 6px 6px;
+    padding: 0px 16px;
+}
+
+.sl-btn {
+    border: solid 1px #ccc;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 3px 12px;
+    background-image: linear-gradient(to bottom, #ffffff 0%, #e2e2e2 100%);
+    box-shadow: 1px 1px 1px #eee;
+    cursor: pointer;
+    height: 32px;
+}
+
+.sl-btn:hover {
+    border: solid 1px #999;
+    color: #111;
+}
+
+.sl-btn:active {
+    box-shadow: inset 0 0 1.5px #555;
+    user-select: none;
+    color: #333;
+}
+
+.sl-modal-content {
+    padding: 20px;
+}
+
+/* modale create de DataTable */
+.form-create {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.form-create label {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 3px;
+
+}
+
+.form-create .sl-select-head {
+    height: 30px;
+}
+
+.form-create label:first-child {
+    margin-top: 0px;
+}
+
+.form-create input {
+    padding: 4px 4px;
+}
+
+.form-create fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 15px 15px 15px;
+    border-radius: 5px;
+}
+
+.datatable-modal-fieldset {
+    margin-top: 8px;
+    margin-bottom: 3px;
+    background-color: #f2f3f8;
+}

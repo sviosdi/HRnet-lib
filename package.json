@@ -1,0 +1,66 @@
+{
+    "name": "sviosdi-datatable",
+    "version": "1.0.4",
+    "description": "an editable table as a react component",
+    "license": "MIT",
+    "author": "sviosdi",
+    "keywords": [
+        "react",
+        "table",
+        "datatable"
+    ],
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "main": "./dist/sviosdi-datatable.umd.js",
+    "module": "./dist/sviosdi-datatable.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/sviosdi-datatable.es.js",
+            "require": "./dist/sviosdi-datatable.umd.js"
+        },
+        "./style.css": "./dist/style.css"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "test": "vitest run",
+        "watch": "vitest",
+        "coverage": "vitest run --coverage"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "node": true,
+            "es2020": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "plugin:react/recommended"
+        ],
+        "parserOptions": {
+            "sourceType": "module"
+        }
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^4.0.1",
+        "vite": "^4.3.9"
+    }
+}
