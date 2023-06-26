@@ -1,6 +1,6 @@
 {
     "name": "sviosdi-datatable",
-    "version": "1.0.4",
+    "version": "1.0.6",
     "description": "an editable table as a react component",
     "license": "MIT",
     "author": "sviosdi",
@@ -11,7 +11,7 @@
     ],
     "files": [
         "dist",
-        "README.md"
+        "src/README.md"
     ],
     "main": "./dist/sviosdi-datatable.umd.js",
     "module": "./dist/sviosdi-datatable.es.js",
