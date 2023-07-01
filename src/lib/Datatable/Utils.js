@@ -14,6 +14,7 @@ const getFlatHeaders = (hds) => {
 }
 
 const getModel = (model) => {
+    console.log('getModel() called')
     let _model = {
         ...model,
         flatHeaders: getFlatHeaders(model.headers),

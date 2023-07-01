@@ -46,7 +46,7 @@ const Submit = ({
                 </button>
             )}
             <button
-                // Attention ! = onClick={formRef.current.getFormData} ne fonctionne pas :
+                // Attention ! = onClick={formRef.current.getData} ne fonctionne pas :
                 onClick={handleSubmit}
                 //
                 className="cfsb-save"

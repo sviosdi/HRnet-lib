@@ -6,29 +6,34 @@ import './Datatable.css'
 import EntriesPages from './EntriesPages'
 import Modal from './Modal'
 
-const Datatable = ({ model, data: initial_data, externalForm }) => {
-    // console.log(initial_data)
-    /* --stangalone-- */
+const Datatable = ({ model, data: initial_data = [], externalForm }) => {
+    const nbEntries = model.entries ? model.entries[0] : model.nbEntries
+    /* Début STATE */
     const [data, setData] = useState(initial_data)
-
     const [dataToUse, setDataToUse] = useState(initial_data)
     const [currentData, setCurrentData] = useState([])
     const [sortBy, setSortBy] = useState(model.sortCol)
     const [descending, setDescending] = useState(!model.ascending)
     const [page, setPage] = useState(1)
-    const nbEntries = model.entries ? model.entries[0] : model.nbEntries
     const [itemsPerPage, setItemsPerPage] = useState(nbEntries)
-
     const [searching, setSearching] = useState(false)
-    const searchRef = useRef(null)
+    /* Fin STATE */
 
+    const searchRef = useRef(null)
     const modalRef = useRef(null)
 
+    /* 
+        Dans le cas où le formulaire est n'est pas généré par la dataTable (présence de la prop. externalForm) et 
+        que l'utilisateur édite une nouvelle entrée alors qu'une recherche est en cours, il faut pouvoir purger
+        le champ de recherche après soumission du formulaire. Dans ce cas on créera un événement personnalisé 
+        'datatableSubmitted' émis par document.dispatchEvent(event) lors de la soumission du formulaire externe.
+        On ajoutera alors un eventListener pour cet événement personnalisé dans le useEffect() suivant :
+    */
     React.useEffect(() => {
         //console.log('useEffect once')
         const endSearching = () => {
-            setSearching(false)
-            searchRef.current.clear()
+            setSearching(false) // marquer la recherche comme non active
+            searchRef.current.clear() // purger le champ de recherche
         }
         if (externalForm) {
             document.addEventListener('datatableSubmitted', endSearching, false)
@@ -43,22 +48,36 @@ const Datatable = ({ model, data: initial_data, externalForm }) => {
         }
     }, [])
 
+    /*
+        Dans le cas où le formulaire est n'est pas généré par la dataTable (présence de la prop. externalForm)
+        il faut alors mettre à jour le state data et dataToUse avec la valeur passée en propriété ( qui est un
+        state géré extérieurement) à chaque changement de cette dernière.
+    */
+    /* -- !standalone -- */
     React.useEffect(() => {
-        //console.log('useEffect de modif des datas')
-        /*  console.log(
-            'enregistrement dans le local storage- - initial_data changed'
-        )
-        localStorage.setItem(model.id, JSON.stringify(initial_data))*/
-        setDataToUse(initial_data)
-        setData(initial_data)
+        //console.log('useEffect de modif des datas - !standalone')
+        if (externalForm) {
+            setDataToUse(initial_data)
+            setData(initial_data)
+        }
     }, [initial_data])
 
-    /* --stangalone-- */
+    /* 
+        Dans le cas où la prop. externarForm n'est pas présente (ou a pour valeur false), c'est la Datatable
+        qui gère le state data. Lorsque ce dernier change (ajout d'une nouvelle entrée) il faut mettre à jour 
+        dataToUse en conséquence.
+    */
+    /* -- standalone -- */
     React.useEffect(() => {
         //console.log('useEffect de modif des datas --standalone--')
-        setDataToUse(data)
+        if (!externalForm) setDataToUse(data)
     }, [data])
 
+    /*
+        Dans le cas où un tri est actif sur une colonne (sortBy !== null) : si une modification des données
+        dataToUse a lieu, ou si un nouvelle colonne est triée ou encore si le 'sens' de tri de la colonne triée 
+        change, il faut alors trier à nouveau les données dataToUse.
+    */
     React.useEffect(() => {
         //console.log('useEffect de tri')
         if (sortBy !== null) {
@@ -110,15 +129,9 @@ const Datatable = ({ model, data: initial_data, externalForm }) => {
      * puis repositionne l'affichage des entrées sur la première page.
      * _data est modifié. */
     const sort = (_data, col) => {
-        //  console.log(_data)
-        //  const copyData = _data.slice()
-        // const column = ev.target.cellIndex
         const desc = col === sortBy && !descending
         setDescending(() => desc)
         setSortBy(col)
-        // _sort(_data.splice(), col, desc)
-        // console.log(_data)
-        //   console.log(_sort(_data.slice(), col, desc))
         setDataToUse(_sort(_data.slice(), col, desc))
         setPage(1)
     }
@@ -170,7 +183,7 @@ const Datatable = ({ model, data: initial_data, externalForm }) => {
             }
             return true
         })
-
+        // on trie les résultats si nécessaire
         if (sortBy !== null) {
             _sort(result, sortBy, descending)
         }
@@ -191,7 +204,7 @@ const Datatable = ({ model, data: initial_data, externalForm }) => {
                     model={model}
                     actionLabel="Save"
                     onSubmit={(entry) => {
-                        //console.log('submitting for embedded')
+                        //console.log('submitting for standalone')
                         const updated_data = [...data, entry]
                         setData(updated_data)
                         console.log('enregistrement dans le localStorage')

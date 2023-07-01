@@ -8,7 +8,7 @@ import model from './data/DataTableModel.js'
 import './App.css'
 
 const App = ({ data: initial_data = [] }) => {
-    model.buttons = null
+    model.buttons = null // annuler l'affichage du bouton d'édition d'une entrée s'il est présent dans le modèle
     const [codepage, setCodepage] = useState(0)
     const [data, setData] = React.useState(initial_data)
     const modalRef = useRef(null)
@@ -24,6 +24,7 @@ const App = ({ data: initial_data = [] }) => {
         console.log('enregistrement dans le localStorage')
         localStorage.setItem(model.id, JSON.stringify(updated_data))
         document.dispatchEvent(event)
+        formRef.current.clear()
         modalRef.current.toggleModal()
     }
 

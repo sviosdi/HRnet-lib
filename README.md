@@ -1,4 +1,4 @@
-#sviosdi-datatable
+# sviosdi-datatable
 
 **sviosdi-datatable** is an editable table written as a react component depending only on [react](https://www.npmjs.com/package/react) and [react-dom](https://www.npmjs.com/package/react-dom) packages.
 

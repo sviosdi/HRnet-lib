@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-//import StandaloneApp from './StandaloneApp.jsx'
+import StandaloneApp from './StandaloneApp.jsx'
 import App from './App'
 import data from './data/employees-list.js'
 import model from './data/DataTableModel.js'
@@ -18,7 +18,8 @@ if (localStorage.getItem(model.id)) {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <App data={initial_data} />
-    </React.StrictMode>
+    // <React.StrictMode>
+    //<App data={initial_data} />
+    <StandaloneApp data={initial_data} />
+    // </React.StrictMode>
 )
