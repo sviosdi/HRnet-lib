@@ -1,6 +1,6 @@
 {
     "name": "sviosdi-datatable",
-    "version": "1.0.12",
+    "version": "1.0.15",
     "description": "an editable table as a react component",
     "license": "MIT",
     "author": "sviosdi",

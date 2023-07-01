@@ -16,4 +16,4 @@ or
     yarn add sviosdi-datatable
 ```
 
-For more information on how to use datatable in your code you can check the documentation [here](https://sviosdi.github.io/HRnet-doc)
+For more information on using datatable in your code, you can check out the documentation [here](https://sviosdi.github.io/HRnet-doc)
